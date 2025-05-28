@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Trasnocho</title>
+  <style>
+    body {
+      background: #1a001a;
+      color: #e0d5ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #c084fc;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+
+    button {
+      background-color: #5a189a;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 20px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #7b2cbf;
+      transform: scale(1.1);
+    }
+
+    .mensaje, .final {
+      display: none;
+      margin: 40px auto;
+      max-width: 800px;
+      background: #2e003e;
+      border: 2px solid #c084fc;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: left;
+      animation: fadeInUp 1s ease forwards;
+      white-space: pre-wrap;
+      font-size: 1.1em;
+    }
+
+    #mensajeTexto {
+      border-right: 2px solid #c084fc;
+      display: inline;
+      white-space: pre-wrap;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Trasnocho</h1>
+
+  <button onclick="mostrarMensaje()">:(</button>
+
+  <div class="mensaje" id="mensaje">
+    <span id="mensajeTexto"></span>
+    <br><br>
+    <button id="botonFinal" style="display:none;" onclick="mostrarFinal()">:)</button>
+  </div>
+
+  <div class="final" id="final">
+    Gracias por todo, en serio.  
+    Cada beso, tu tiempo que me dedicas, cada caricia, tu compañía...  
+    Por todo:  
+    <strong>TE AMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</strong>
+  </div>
+
+  <script>
+    const texto = `Estoy enamorado de ti...
+
+Estoy enamorado... Sí, de una manera que trasciende lo cotidiano, que se cuela en cada suspiro, en cada latido... Estoy enamorado de tu voz, esa melodía dulce que me calma y me envuelve en un abrazo invisible cada vez que hablas...
+
+Tu ternura... Tu ternura es como un bálsamo para mi alma cansada, un refugio seguro donde cada gesto tuyo se convierte en una caricia para mi espíritu.
+
+Eres tú, toda tú, quien ha pintado mi mundo de colores vibrantes, quien ha transformado mi silencio en poesía, mi quietud en música... Estoy perdido, completamente perdido en la inmensidad de tu mirada, esos ojitos cafés profundos como el océano, capaces de hundirse en mi alma, elevarme hasta las nubes y llenarme de una luz que inunda cada rincón oscuro de mi ser...
+
+Estoy enamorado, sí, con todas las letras, con todo el peso del sentimiento que este corazón guarda.
+
+Estoy enamorado de tus manos, esos dedos delicados que cuando se entrelazan con los míos me dicen que todo estará bien.
+
+De tu cabello, ese manto que enmarca tu rostro y que brilla bajo el sol como hilos de oro, de tus labios, fuente de sonrisas que iluminan mis días más grises, y de tu risa, esa melodía que desearía poder escuchar en bucle eterno porque en ella encuentro mi paz...
+
+Estoy enamorado de los pequeños detalles, esos que quizás para otros pasan desapercibidos, pero que para mí son los que te hacen perfecta.
+
+De tus "imperfecciones", que en mi mundo se transforman en las marcas únicas de tu ser, esas que te hacen ser tú y no otra en este vasto universo...
+
+Estoy enamorado de ti, de todo lo que eres y de lo que no eres, de lo que dices y de lo que callas. De la manera en que caminas, de cómo te enojas y de cómo perdonas, de tu fuerza y de tus miedos, de tu luz y de tus sombras...
+
+Estoy enamorado, profundamente enamorado de la esencia que emanas, de ese ser maravilloso que tuvo la fortuna de cruzarse en mi camino.
+
+Y en esta declaración, no hay metáforas suficientes, ni palabras capaces de encapsular la magnitud de este sentimiento.
+
+Solo sé que estoy enamorado...`;
+
+    function mostrarMensaje() {
+      document.getElementById("mensaje").style.display = "block";
+      escribirTexto();
+    }
+
+    function escribirTexto() {
+      const textoElemento = document.getElementById("mensajeTexto");
+      let index = 0;
+
+      function escribir() {
+        if (index < texto.length) {
+          textoElemento.innerHTML += texto.charAt(index);
+          index++;
+          setTimeout(escribir, 25); // velocidad
+        } else {
+          document.getElementById("botonFinal").style.display = "inline-block";
+        }
+      }
+
+      escribir();
+    }
+
+    function mostrarFinal() {
+      document.getElementById("final").style.display = "block";
+    }
+  </script>
+</body>
+</html>
